@@ -1,0 +1,69 @@
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <!-- the folllowing script is needed to animate gltf files -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.2.0/dist/aframe-extras.min.js"></script>
+    <!-- MindAR library -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <style>
+       .back-btn {
+    position: fixed;
+    top: 1rem;
+    left: 2rem;
+    background-color: #20aaee;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 1000; /* Ensure it's above other content */
+}
+     </style>
+</head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: ./marker/targets.mind; maxTrack: 3" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      
+      <a-assets>
+        <!--Card Images-->
+        <img id="spidermanCard" src="./marker/ar tracking card JPG/spiderman.jpg"></img>
+        <img id="spidermanmilesCard" src="./marker/ar tracking card JPG/spidermanmiles.jpg"></img>
+        <img id="spiderman2Card" src="./marker/ar tracking card JPG/spiderman2.jpg"></img>
+        <img id="spiderman3Card" src="./marker/ar tracking card JPG/spiderman3.jpg"></img>
+        <!--3D Models-->
+        <a-asset-item id="spidermanModel" src="./asset/3d models/sukhoi_su-57_felon_-_fighter_jet_-_free.glb"></a-asset-item>
+        <a-asset-item id="spidermanmilesModel" src="asset/3d models/lb-works_ferrari_f40_-__free.glb"></a-asset-item>
+        <a-asset-item id="spiderman2Model" src="./asset/3d models/juggernaut_astro_toilet.glb"></a-asset-item>
+        <a-asset-item id="spiderman3Model" src="./asset/3d models/spiderman3.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane src="#spidermanCard" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#spidermanModel" animation-mixer></a-gltf-model>
+      </a-plane>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-plane src="#spidermanmilesCard" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-gltf-model rotation="5 10 15 " position="0 0 0.1" scale="0.5 0.5 0.05" src="#spidermanmilesModel" animation-mixer></a-gltf-model>
+      </a-plane>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 2">
+        <a-plane src="spiderman2Card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.5 0.5 0.5" src="#spiderman2Model" animation-mixer></a-gltf-model>
+      </a-plane>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 3">
+        <a-plane src="spiderman3Card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.5 0.5 0.5" src="#spiderman3Model" animation-mixer></a-gltf-model>
+      </a-plane>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
